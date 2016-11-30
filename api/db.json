@@ -1,0 +1,25 @@
+{
+  "circles": [],
+  "favorites": [
+    {
+      "id": 1,
+      "name": "Moes"
+    },
+    {
+      "id": 2,
+      "name": "Seseme"
+    },
+    {
+      "id": 3,
+      "name": "Wild Wings"
+    },
+    {
+      "id": 4
+    },
+    {
+      "name": "Marcos",
+      "id": 5
+    }
+  ],
+  "votes": []
+}
