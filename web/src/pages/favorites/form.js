@@ -1,6 +1,6 @@
 const React = require('react')
 
-const {Redirect} = require('react-router')
+const { Redirect } = require('react-router')
 
 const { set, lensProp } = require('ramda')
 
@@ -14,7 +14,11 @@ const FavoriteForm = React.createClass({
     }
   },
   componentDidMount () {
-
+    if (this.props.params.id) {
+      // edit mode
+      data.get('favorites', this.props.params.id)
+        .then(favorite => this.setState({favorite}))
+    }
   },
   handleChange(field) {
     return (e) => {
@@ -27,6 +31,15 @@ const FavoriteForm = React.createClass({
   },
   handleSubmit(e) {
     e.preventDefault()
+    if (this.state.favorite.id) {
+      return data.put('favorites', this.state.favorite.id, this.state.favorite)
+        .then(res => {
+          if (res.id) {
+            this.setState({resolved: res.id})
+          }
+        })
+    }
+
     data.post('favorites', this.state.favorite)
       .then(res => {
         if (res.id) {
@@ -47,7 +60,7 @@ const FavoriteForm = React.createClass({
             <div>
               <label htmlFor="">Name</label>
               <input type="text"
-                value={this.state.name}
+                value={this.state.favorite.name}
                 onChange={this.handleChange('name')}
               />
             </div>

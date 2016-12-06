@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "json-server db.json --watch --port 4000"
+    "start": "json-server db.json --watch --port 4000 -m ./jwt-validate.js"
   },
   "keywords": [],
   "author": "Tom",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^2.0.0",
+    "express-jwt": "^5.1.0",
     "json-server": "^0.9.2"
   }
 }
